@@ -2,4 +2,5 @@ node_modules
 lib/index.d.ts
 lib/index.js
 lib/index.js.map
+.DS_Store
 .idea
