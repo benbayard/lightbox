@@ -20,7 +20,8 @@
   ],
   "author": "Ben Bayard",
   "license": "MIT",
-  "dependencies": {
-    "@types/isomorphic-fetch": "0.0.33"
+  "devDependencies": {
+    "tslint": "^4.5.1",
+    "typescript": "^2.2.1"
   }
 }
