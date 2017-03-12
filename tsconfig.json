@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "lib": [
+      "ES2015",
+      "es6",
+      "dom"
+    ],
+    "declaration": true,
+    "noLib": false,
+    "outFile": "lib/index.js",
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "alwaysStrict": true
+  },
+  "files": ["./index.ts"],
+  "exclude": [
+    "node_modules"
+  ],
+  "compileOnSave": false
+}

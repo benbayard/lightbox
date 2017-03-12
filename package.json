@@ -1,0 +1,23 @@
+{
+  "name": "lightbox",
+  "version": "0.0.1",
+  "description": "A photolightbox programmed in Typescript and VanillaJS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "npm run build; cd ./lib; python -m SimpleHTTPServer",
+    "build": "./node_modules/.bin/tsc",
+    "watch": "npm run build -- --watch",
+    "lint": "./node_modules/.bin/tslint index.ts src/**/*.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/benbayard/lightbox"
+  },
+  "keywords": [
+    "typescript",
+    "lightbox"
+  ],
+  "author": "Ben Bayard",
+  "license": "MIT"
+}
