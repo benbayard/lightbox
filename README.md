@@ -41,11 +41,6 @@ $ npm start
 
 ## Things I'd like to add
 
-Currently on the grid level if the images are not the same height
-and width (like those on google images and giphy) the layout is 
-less than ideal. To fix this I would use mosaic tiling using `CSS3`
-`column-count` and `column-gap.`
-
 I would like to add tests, but I felt it was not necessary with the 
 type-safety.
 
