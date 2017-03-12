@@ -53,7 +53,7 @@ button {
   margin-top: calc(var(--header-height) + var(--spacing));
 }
 
-#root {
+#root-lightbox {
   column-gap: calc(var(--spacing));
   margin-left: calc(-1 * var(--spacing));
   margin-right: calc(-1 * var(--spacing));
@@ -73,17 +73,17 @@ button {
 }
 
 @media (max-width: 1024px) {
-  #root {
+  #root-lightbox {
     column-count: 3;
   }
 }
 @media (max-width: 768px) {
-  #root {
+  #root-lightbox {
     column-count: 2;
   }
 }
 @media (max-width: 640px) {
-  #root {
+  #root-lightbox {
     column-count: 1;
   }
 }

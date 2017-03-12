@@ -18,7 +18,7 @@ namespace Mount {
     };
   };
 
-  export const getRoot = findByID("root", "Mounting");
+  export const getRoot = findByID("root-lightbox", "Mounting");
 
   export const getServiceSelector = findByID("service", "Service Selector");
 
