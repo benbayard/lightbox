@@ -1,6 +1,6 @@
 /// <reference path="./mount.ts" />
 /// <reference path="./api.ts" />
-/// <reference path="./render.ts" />
+/// <reference path="./grid_factory.ts" />
 
 namespace ServiceSelector {
   export let currentService = API.Service.Flickr;
@@ -28,7 +28,7 @@ namespace ServiceSelector {
 
     (selector as HTMLSelectElement).onchange = (event: KeyboardEvent) => {
       currentService = parseInt((event.target as any).value, 10);
-      Render.fromServiceSelector();
+      GridFactory.fromServiceSelector();
     };
   };
 }

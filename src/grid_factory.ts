@@ -2,7 +2,7 @@
 /// <reference path="./service_selector.ts" />
 /// <reference path="./image_factory.ts" />
 
-namespace Render {
+namespace GridFactory {
   /**
    * Based on the selected service update the view
    * with the correct API.
