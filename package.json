@@ -19,5 +19,8 @@
     "lightbox"
   ],
   "author": "Ben Bayard",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "@types/isomorphic-fetch": "0.0.33"
+  }
 }
