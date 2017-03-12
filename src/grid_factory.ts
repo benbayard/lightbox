@@ -10,10 +10,11 @@ namespace GridFactory {
    */
   export async function fromServiceSelector() {
     const root = Mount.getRoot();
-    const images = await API.get(ServiceSelector.currentService);
     /*
-     * Empty the container
+     * Show Loading message
      */
+    root.innerHTML = "<h1 class=\"loading\">Loading...</h1>";
+    const images = await API.get(ServiceSelector.currentService);
     root.innerHTML = "";
     images.forEach((imageData, index) => {
       const wrapper = document.createElement("div");
