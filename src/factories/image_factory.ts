@@ -1,4 +1,4 @@
-/// <reference path="./config/api_image.ts" />
+/// <reference path="../config/api_image.ts" />
 /// <reference path="./modal_factory.ts" />
 namespace ImageFactory {
   export const didClick = (index: number) => {

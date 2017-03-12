@@ -1,8 +1,8 @@
-/// <reference path="./mount.ts" />
-/// <reference path="./api.ts" />
+/// <reference path="../mount.ts" />
+/// <reference path="../api.ts" />
 /// <reference path="./image_factory.ts" />
 /// <reference path="./button_factory.ts" />
-/// <reference path="./modal_utils.ts" />
+/// <reference path="../utils/modal_utils.ts" />
 
 namespace ModalFactory {
   /**

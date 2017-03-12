@@ -1,4 +1,4 @@
-/// <reference path="./api.ts" />
+/// <reference path="../api.ts" />
 
 namespace ModalUtils {
   export const modalContentClassName = "modal-content";

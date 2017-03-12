@@ -1,4 +1,4 @@
-/// <reference path="./modal_utils.ts" />
+/// <reference path="../utils/modal_utils.ts" />
 namespace ButtonFactory {
   export const create = () => {
     const nextButton = document.createElement("button");

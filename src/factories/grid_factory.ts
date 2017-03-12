@@ -1,5 +1,5 @@
-/// <reference path="./mount.ts" />
-/// <reference path="./service_selector.ts" />
+/// <reference path="../mount.ts" />
+/// <reference path="../service_selector.ts" />
 /// <reference path="./image_factory.ts" />
 
 namespace GridFactory {

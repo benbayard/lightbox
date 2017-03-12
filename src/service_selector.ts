@@ -1,6 +1,6 @@
 /// <reference path="./mount.ts" />
 /// <reference path="./api.ts" />
-/// <reference path="./grid_factory.ts" />
+/// <reference path="./factories/grid_factory.ts" />
 
 namespace ServiceSelector {
   export let currentService = API.Service.Flickr;

@@ -1,7 +1,7 @@
 /// <reference path="./src/mount.ts" />
 /// <reference path="./src/api.ts" />
 /// <reference path="./src/service_selector.ts" />
-/// <reference path="./src/grid_factory.ts" />
+/// <reference path="./src/factories/grid_factory.ts" />
 
 /**
  * First we will start by locating our mounting node
