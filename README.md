@@ -39,4 +39,19 @@ be invoked using:
 $ npm start
 ```
 
-## 
+## Things I'd like to add
+
+Currently on the grid level if the images are not the same height
+and width (like those on google images and giphy) the layout is 
+less than ideal. To fix this I would use mosaic tiling using `CSS3`
+`column-count` and `column-gap.`
+
+I would like to add tests, but I felt it was not necessary with the 
+type-safety.
+
+I would also like to use some sort of declarative rendering with 
+a state container to make the code more reliable.
+
+Finally, I would like to have implemented `BrowserHistory`, but 
+with the lack of declarative rendering implementing this along
+with the server would have required handling dozens of edge cases. 
