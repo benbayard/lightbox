@@ -1,5 +1,7 @@
 # Welcome To Lightbox
 
+View the Demo [here](benbayard.github.io/lightbox/index.html).
+
 This is a Typescript and Javascript implementation of a lightbox. A grid view of images,
 when clicked opens a lightbox with arrows. The arrows are built in CSS using borders.
 
@@ -30,14 +32,15 @@ but otherwise does not transform the code. Native ES6 (except for bundling)
 is running in the browser.
 
 ## Typescript 
-The Typescript version of this app is built using just the typescript compiler. 
+The Typescript version of this app is built using just the typescript compiler.
+This app was started using the typescript version, but was later ported to ES6
+where it was finished. 
 
 ### Why Namespaces?
-A namespace in Typescript is very similar to a 
-default export in ES6. However, importing it is done with a 
-typescript special comment that references the path. This is
-the only way to use the typescript compiler without a module
-bundler like `Webpack`.
+A namespace in Typescript is very similar to `import * as` export in ES6.
+However, importing it is done with a typescript special comment that references 
+the path. This is the only way to use multiple files in the typescript compiler 
+without a module bundler like `Webpack`.
   
 ### Getting Started
  
