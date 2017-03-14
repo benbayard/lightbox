@@ -30,7 +30,6 @@ const leftTransform = (numImages) => `transform: translate3d(${activeImage / num
  * @param innerContent
  */
 export const setImageContainerStyle = (imageContainer, innerContent) => {
-
     const activeImageNode = document.querySelectorAll(`.${modalImageClassName}`)[activeImage];
 
     innerContent.setAttribute("style", `height: ${activeImageNode.clientHeight}px;`);
@@ -49,7 +48,6 @@ export const setImageContainerStyle = (imageContainer, innerContent) => {
  * @param size
  */
 export const updateInnerContainerSize = (innerContent, size) => {
-
     innerContent.setAttribute("style", `height: ${size}px;`);
 
 };
