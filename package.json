@@ -22,6 +22,7 @@
   "license": "MIT",
   "devDependencies": {
     "tslint": "^4.5.1",
-    "typescript": "^2.2.1"
+    "typescript": "^2.2.1",
+    "webpack": "^2.2.1"
   }
 }
