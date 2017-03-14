@@ -23,7 +23,13 @@ export const updateSize = (innerContent, imgNode) => {
 
 export const createAndAppendImages = (innerContent, imageContainer, images) => {
   return images.map((img, index) => {
-    const imgNode = create(img, index, false);
+    const directImg = create(img, index, false);
+    const imgNode = document.createElement("div");
+    const title = document.createElement("h3");
+    title.classList.add("img-title");
+    title.textContent = img.title;
+    imgNode.appendChild(directImg);
+    imgNode.appendChild(title);
     imgNode.classList.add(imageClassName);
     updateSize(innerContent, imgNode);
     imgNode.classList.add(modalImageClassName);
