@@ -1,30 +1,45 @@
 # Welcome To Lightbox
 
-This is my attempt at a Typescript version of a lightbox. 
+This is a Typescript and Javascript implementation of a lightbox. A grid view of images,
+when clicked opens a lightbox with arrows. The arrows are built in CSS using borders.
 
-## Features:
+I built the app using ES6 / ES7(typescript), CSS3 and HTML5. The HTML5 features are around
+DOM manipulation and CSS classes. The CSS3 is mostly CSS variables,
+view units and transform.
 
-1. Fully Documented using TypeDoc comments.
-1. Fully linted code using TSLint.
+### Browser Support
+This works in Chrome and Firefox. Working on iOS Safari and desktop Safari works
+except for data fetching. Unfortunately, `window.fetch` is not supported until  
+Safari `10.2.1`. 
+
+### Features 
 1. Support for google images, flickr, and giphy.
-1. Typesafe javascript.
 1. CSS using variables for added maintainability.
 1. Easily add new providers by conforming to a documented API. 
 
-## Terminology:
-
-* **Namespace:** A namespace in Typescript is very similar to a 
-  default export in ES6. However, importing it is done with a 
-  typescript special comment that references the path. This is
-  the only way to use the typescript compiler without a module
-  bundler like `Webpack`.
-  
-* **Factory:** A namespace that allows for an HTML element to be
+### Factories
+A set of function that enables an HTML element to be
   * Created
   * Destroyed
   * Updated
+This would be close to a `Component`.
+
+## Javascript
+The Javascript version of this app uses webpack for bundling, 
+but otherwise does not transform the code. Native ES6 (except for bundling)
+is running in the browser.
+
+## Typescript 
+The Typescript version of this app is built using just the typescript compiler. 
+
+### Why Namespaces?
+A namespace in Typescript is very similar to a 
+default export in ES6. However, importing it is done with a 
+typescript special comment that references the path. This is
+the only way to use the typescript compiler without a module
+bundler like `Webpack`.
   
-## Getting Started
+### Getting Started
  
 To get started first install all the dependencies with 
 
@@ -39,10 +54,7 @@ be invoked using:
 $ npm start
 ```
 
-## Things I'd like to add
-
-I would like to add tests, but I felt it was not necessary with the 
-type-safety.
+### Things I'd like to add
 
 I would also like to use some sort of declarative rendering with 
 a state container to make the code more reliable.
