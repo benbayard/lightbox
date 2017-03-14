@@ -30,15 +30,14 @@ const leftTransform = (numImages) => `transform: translate3d(${activeImage / num
  * @param innerContent
  */
 export const setImageContainerStyle = (imageContainer, innerContent) => {
-    const activeImageNode = document.querySelectorAll(`.${modalImageClassName}`)[activeImage];
+  const activeImageNode = document.querySelectorAll(`.${modalImageClassName}`)[activeImage];
 
-    innerContent.setAttribute("style", `height: ${activeImageNode.clientHeight}px;`);
+  innerContent.setAttribute("style", `height: ${activeImageNode.clientHeight}px;`);
 
-    imageContainer.setAttribute("style", `
+  imageContainer.setAttribute("style", `
     width: ${width(innerContent.clientWidth, images.length)}px;
     ${leftTransform(images.length)}
   `);
-
 };
 
 /**
@@ -48,8 +47,7 @@ export const setImageContainerStyle = (imageContainer, innerContent) => {
  * @param size
  */
 export const updateInnerContainerSize = (innerContent, size) => {
-    innerContent.setAttribute("style", `height: ${size}px;`);
-
+  innerContent.setAttribute("style", `height: ${size}px;`);
 };
 
 export const isLast = () => activeImage === images.length - 1;

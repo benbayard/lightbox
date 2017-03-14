@@ -2,12 +2,15 @@ import {
   getModalContainer
 } from "../mount";
 import {images} from "../api";
-import {create as createImageFactory} from "./image_factory";
+import {
+  createAndAppendImages,
+  updateSize,
+  imageClassName
+} from "./image_factory";
 import {create as createButtonFactory} from "./button_factory";
 import {
   setActiveImage,
   modalContentClassName,
-  modalImageClassName,
   modalImageContainerClassName,
   updateInnerContainerSize,
   setImageContainerStyle,
@@ -33,15 +36,9 @@ export const open = (id) => {
   modal.appendChild(innerContent);
 
   const imageContainer = document.createElement("section");
-  const imageNodes = images.map((img, index) => createImageFactory(img, index, false));
-
   imageContainer.classList.add(modalImageContainerClassName);
-  imageNodes.forEach((imgNode) => {
-    imgNode.setAttribute("style", `width: ${innerContent.clientWidth}px;`);
-    imgNode.classList.add(modalImageClassName);
-    imageContainer.appendChild(imgNode);
-  });
   innerContent.appendChild(imageContainer);
+  const imageNodes = createAndAppendImages(innerContent, imageContainer, images);
 
   updateInnerContainerSize(innerContent, imageNodes[activeImage].clientHeight);
   setImageContainerStyle(imageContainer, innerContent);
@@ -53,7 +50,6 @@ export const open = (id) => {
 
   const modalBackground = document.createElement("section");
 
-  modalBackground.innerHTML = "";
   modalBackground.classList.add("modal-background");
   modalBackground.onclick = close;
   modal.appendChild(modalBackground);
@@ -67,25 +63,32 @@ export const open = (id) => {
   /**
    * In reality this should be probably be debounced.
    * */
-  window.onresize = () => {
-    /**
-     * If the animation exists on the container there will
-     * be a terrifying experience. Here we must remove the class
-     * but wait for that to be rendered out before we continue.
-     * */
-    imageContainer.classList.remove('animate');
-    setImmediate(() => {
-      imageNodes.forEach(i => i.setAttribute("style", `width: ${innerContent.clientWidth}px;`));
-      updateInnerContainerSize(innerContent, imageNodes[activeImage].clientHeight);
-      setImageContainerStyle(imageContainer, innerContent);
-      /**
-       * If we don't wait here, it will animate regardless
-       */
-      setImmediate(() => imageContainer.classList.add('animate'));
-    });
-  };
+  window.onresize = resize;
 };
 
+/**
+ * Resize the modal container and images based on the new screen size
+ */
+export const resize = () => {
+  /**
+   * If the animation exists on the container there will
+   * be a terrifying experience. Here we must remove the class
+   * but wait for that to be rendered out before we continue.
+   * */
+  const innerContent = document.querySelector(`.${modalContentClassName}`);
+  const imageContainer = document.querySelector(`.${modalImageContainerClassName}`);
+  const imageNodes = document.querySelectorAll(`.${imageClassName}`);
+  imageContainer.classList.remove('animate');
+  setImmediate(() => {
+    imageNodes.forEach(imgNode => updateSize(innerContent, imgNode));
+    updateInnerContainerSize(innerContent, imageNodes[activeImage].clientHeight);
+    setImageContainerStyle(imageContainer, innerContent);
+    /**
+     * If we don't wait here, it will animate regardless
+     */
+    setImmediate(() => imageContainer.classList.add('animate'));
+  });
+};
 /**
  * Deactivate the modal.
  */
