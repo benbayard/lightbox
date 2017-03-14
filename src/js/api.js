@@ -18,19 +18,27 @@ export const Service = {
  * @param service
  * @returns {Promise<Image[]>}
  */
-export async function get(service) {
+export function get(service) {
+  let uri;
+  let cookDataFormat;
   switch (service) {
     case Service.Giphy:
-      images = await API.fetchAndParse(Giphy.URI(), Giphy.cookDataFormat);
+      uri = Giphy.URI();
+      cookDataFormat = Giphy.cookDataFormat;
       break;
     case Service.Google:
-      images = await API.fetchAndParse(Google.URI(), Google.cookDataFormat);
+      uri = Google.URI();
+      cookDataFormat = Google.cookDataFormat;
       break;
     case Service.Flickr:
-      images = await API.fetchAndParse(Flickr.URI(), Flickr.cookDataFormat);
+      uri = Flickr.URI();
+      cookDataFormat = Flickr.cookDataFormat;
       break;
     default: throw new Error("This service is not supported");
   }
 
-  return images;
+  return API.fetchAndParse(uri, cookDataFormat).then((imgs) => {
+    images = imgs;
+    return images;
+  });
 }

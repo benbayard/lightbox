@@ -4,8 +4,6 @@
  * @param cookDataFormat
  * @returns {Promise<Image[]>}
  */
-export function fetchAndParse(uri, cookDataFormat) {
-  return fetch(uri)
-    .then(data => data.json())
-    .then(cookDataFormat);
-}
+export const fetchAndParse = (uri, cookDataFormat) => fetch(uri)
+  .then((data) => data.json())
+  .then(cookDataFormat);

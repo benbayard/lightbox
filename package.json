@@ -7,6 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "npm run build; cd ./lib; python -m SimpleHTTPServer",
     "build": "./node_modules/.bin/tsc",
+    "build-js": "./node_modules/.bin/webpack index.js lib/index.js --watch --devtool source-map",
     "watch": "npm run build -- --watch",
     "lint": "./node_modules/.bin/tslint index.ts src/**/*.ts"
   },

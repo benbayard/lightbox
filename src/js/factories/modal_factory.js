@@ -1,8 +1,18 @@
-import * as Mount from "../mount"
-import * as API from "../api"
-import * as ImageFactory from "./image_factory"
-import * as ButtonFactory from "./button_factory"
-import * as ModalUtils from "../utils/modal_utils"
+import {
+  getModalContainer
+} from "../mount";
+import {images} from "../api";
+import {create as createImageFactory} from "./image_factory";
+import {create as createButtonFactory} from "./button_factory";
+import {
+  setActiveImage,
+  modalContentClassName,
+  modalImageClassName,
+  modalImageContainerClassName,
+  updateInnerContainerSize,
+  setImageContainerStyle,
+  activeImage
+} from "../utils/modal_utils";
 
 /**
  * Activate the mobile
@@ -10,44 +20,50 @@ import * as ModalUtils from "../utils/modal_utils"
  * @param id
  */
 export const open = (id) => {
-  ModalUtils.setActiveImage(id);
-  const modal = Mount.getModalContainer();
-  modal.innerHTML = "";
-  modal.classList.add("active");
+    setActiveImage(id);
+    const modal = getModalContainer();
 
-  const innerContent = document.createElement("section");
-  innerContent.classList.add(ModalUtils.modalContentClassName);
+    modal.innerHTML = "";
+    modal.classList.add("active");
 
-  modal.appendChild(innerContent);
+    const innerContent = document.createElement("section");
 
-  const imageContainer = document.createElement("section");
-  const imageNodes = API.images.map((img, index) => ImageFactory.create(img, index, false));
-  imageContainer.classList.add(ModalUtils.modalImageContainerClassName);
-  imageNodes.forEach((imgNode) => {
-    imgNode.setAttribute("style", `width: ${innerContent.clientWidth}px;`);
-    imgNode.classList.add(ModalUtils.modalImageClassName);
-    imageContainer.appendChild(imgNode);
-  });
-  innerContent.appendChild(imageContainer);
+    innerContent.classList.add(modalContentClassName);
 
-  ModalUtils.updateInnerContainerSize(innerContent, imageNodes[ModalUtils.activeImage].clientHeight);
-  ModalUtils.setImageContainerStyle(imageContainer, innerContent);
+    modal.appendChild(innerContent);
 
-  const {nextButton, previousButton} = ButtonFactory.create();
-  innerContent.appendChild(nextButton);
-  innerContent.appendChild(previousButton);
+    const imageContainer = document.createElement("section");
+    const imageNodes = images.map((img, index) => createImageFactory(img, index, false));
 
-  const modalBackground = document.createElement("section");
-  modalBackground.innerHTML = "hi";
-  modalBackground.classList.add("modal-background");
-  modalBackground.onclick = close;
-  modal.appendChild(modalBackground);
+    imageContainer.classList.add(modalImageContainerClassName);
+    imageNodes.forEach((imgNode) => {
+      imgNode.setAttribute("style", `width: ${innerContent.clientWidth}px;`);
+      imgNode.classList.add(modalImageClassName);
+      imageContainer.appendChild(imgNode);
+    });
+    innerContent.appendChild(imageContainer);
+
+    updateInnerContainerSize(innerContent, imageNodes[activeImage].clientHeight);
+    setImageContainerStyle(imageContainer, innerContent);
+
+    const {nextButton, previousButton} = createButtonFactory();
+
+    innerContent.appendChild(nextButton);
+    innerContent.appendChild(previousButton);
+
+    const modalBackground = document.createElement("section");
+
+    modalBackground.innerHTML = "hi";
+    modalBackground.classList.add("modal-background");
+    modalBackground.onclick = close;
+    modal.appendChild(modalBackground);
+
 };
 
 /**
  * Deactivate the modal.
  */
 export const close = () => {
-  const modal = Mount.getModalContainer();
-  modal.classList.remove("active");
+    const modal = getModalContainer();
+    modal.classList.remove("active");
 };

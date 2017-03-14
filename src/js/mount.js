@@ -4,17 +4,22 @@
  * @param type
  * @returns {()=>Element}
  */
-export const findByID = (id, type) => {
-  return () => {
+export const findByID = (id, type) => () => {
+
     const el = document.querySelector(`#${id}`);
+
     /**
      * If the element is not found querySelector will return a null value
      */
+
     if (el === null) {
-      throw new Error(`${type} element not found`);
+
+        throw new Error(`${type} element not found`);
+
     }
+
     return el;
-  };
+
 };
 
 export const getRoot = findByID("root-lightbox", "Mounting");

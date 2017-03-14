@@ -1,4 +1,4 @@
-import * as API from "../api";
+import {images} from "../api";
 
 export const modalContentClassName = "modal-content";
 export const modalImageContainerClassName = "modal-image-container";
@@ -21,9 +21,7 @@ const width = (clientWidth, numImages) => clientWidth * numImages;
  * @param numImages
  * @returns {string}
  */
-const leftTransform = (numImages) => {
-  return `transform: translate3d(${activeImage / numImages * -100}%, 0, 0);`;
-};
+const leftTransform = (numImages) => `transform: translate3d(${activeImage / numImages * -100}%, 0, 0);`;
 
 /**
  * Update the innerContent
@@ -32,13 +30,16 @@ const leftTransform = (numImages) => {
  * @param innerContent
  */
 export const setImageContainerStyle = (imageContainer, innerContent) => {
-  const activeImageNode = document.querySelectorAll(`.${modalImageClassName}`)[activeImage];
-  innerContent.setAttribute("style", `height: ${activeImageNode.clientHeight}px;`);
 
-  imageContainer.setAttribute("style", `
-    width: ${width(innerContent.clientWidth, API.images.length)}px;
-    ${leftTransform(API.images.length)}
+    const activeImageNode = document.querySelectorAll(`.${modalImageClassName}`)[activeImage];
+
+    innerContent.setAttribute("style", `height: ${activeImageNode.clientHeight}px;`);
+
+    imageContainer.setAttribute("style", `
+    width: ${width(innerContent.clientWidth, images.length)}px;
+    ${leftTransform(images.length)}
   `);
+
 };
 
 /**
@@ -48,9 +49,11 @@ export const setImageContainerStyle = (imageContainer, innerContent) => {
  * @param size
  */
 export const updateInnerContainerSize = (innerContent, size) => {
-  innerContent.setAttribute("style", `height: ${size}px;`);
+
+    innerContent.setAttribute("style", `height: ${size}px;`);
+
 };
 
-export const isLast = () => activeImage === API.images.length - 1;
+export const isLast = () => activeImage === images.length - 1;
 
 export const isFirst = () => activeImage === 0;
