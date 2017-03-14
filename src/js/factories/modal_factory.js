@@ -53,7 +53,7 @@ export const open = (id) => {
 
   const modalBackground = document.createElement("section");
 
-  modalBackground.innerHTML = "hi";
+  modalBackground.innerHTML = "";
   modalBackground.classList.add("modal-background");
   modalBackground.onclick = close;
   modal.appendChild(modalBackground);
@@ -64,12 +64,23 @@ export const open = (id) => {
    * */
   setImmediate(() => imageContainer.classList.add('animate'));
 
+  /**
+   * In reality this should be probably be debounced.
+   * */
   window.onresize = () => {
-    setImmediate(() => imageContainer.classList.remove('animate'));
+    /**
+     * If the animation exists on the container there will
+     * be a terrifying experience. Here we must remove the class
+     * but wait for that to be rendered out before we continue.
+     * */
+    imageContainer.classList.remove('animate');
     setImmediate(() => {
       imageNodes.forEach(i => i.setAttribute("style", `width: ${innerContent.clientWidth}px;`));
       updateInnerContainerSize(innerContent, imageNodes[activeImage].clientHeight);
       setImageContainerStyle(imageContainer, innerContent);
+      /**
+       * If we don't wait here, it will animate regardless
+       */
       setImmediate(() => imageContainer.classList.add('animate'));
     });
   };
