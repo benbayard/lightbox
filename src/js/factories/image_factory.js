@@ -22,12 +22,12 @@ export const updateSize = (innerContent, imgNode) => {
 };
 
 export const createAndAppendImages = (innerContent, imageContainer, images) => {
-  const imageNodes = images.map((img, index) => create(img, index, false));
-  imageNodes.forEach((imgNode) => {
+  return images.map((img, index) => {
+    const imgNode = create(img, index, false);
     imgNode.classList.add(imageClassName);
     updateSize(innerContent, imgNode);
     imgNode.classList.add(modalImageClassName);
     imageContainer.appendChild(imgNode);
+    return imgNode;
   });
-  return imageNodes;
 };
