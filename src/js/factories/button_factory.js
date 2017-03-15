@@ -14,12 +14,27 @@ export const create = () => {
 
   nextButton.onclick = next;
   previousButton.onclick = previous;
+  /**
+   * This button advances the carousel
+   */
   nextButton.classList.add("next");
   if (isLast()) {
+    /**
+     * Hide the next button if it is it
+     *
+     */
     nextButton.classList.add("hide");
   }
+  /**
+   * This button advances the carousel to the
+   * previous image
+   */
   previousButton.classList.add("previous");
   if (isFirst()) {
+    /**
+     * Hide the previous button if we are already
+     * on the first image.
+     */
     previousButton.classList.add("hide");
   }
 
@@ -28,6 +43,10 @@ export const create = () => {
     previousButton
   };
 };
+
+/**
+ * Advance the carousel to the next image.
+ */
 export const next = () => {
   const previousButton = document.querySelector(".previous");
 
@@ -48,6 +67,9 @@ export const next = () => {
   setImageContainerStyle(imageContainer, innerContent);
 };
 
+/**
+ * Advance the carousel to the previous image.
+ */
 export const previous = () => {
   const nextButton = document.querySelector(".next");
 
