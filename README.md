@@ -1,6 +1,6 @@
 # Welcome To Lightbox
 
-View the Demo [here](benbayard.github.io/lightbox/index.html).
+View the Demo [here](http://benbayard.github.io/lightbox/index.html).
 
 This is a Typescript and Javascript implementation of a lightbox. A grid view of images,
 when clicked opens a lightbox with arrows. The arrows are built in CSS using borders.
