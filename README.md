@@ -58,8 +58,9 @@ $ npm start
 ```
 
 ### Things I'd like to add
+First I would like to improve the way vertical images render.
 
-I would also like to use some sort of declarative rendering with 
+Then, I would also like to use some sort of declarative rendering with 
 a state container to make the code more reliable.
 
 Finally, I would like to have implemented `BrowserHistory`, but 
